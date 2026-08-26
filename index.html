@@ -73,18 +73,36 @@
 
   header.nav {
     position: sticky; top: 0; z-index: 50;
-    background: rgba(10,10,11,0.82); backdrop-filter: blur(10px);
+    background: rgba(10,10,11,0.9); backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(255,255,255,0.06);
   }
   .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
   .brand { font-family: "Cormorant Garamond", serif; font-size: 22px; font-weight: 600; letter-spacing: 0.02em; }
   .brand span { color: var(--gold); }
-  nav.links { display: flex; gap: 26px; align-items: center; }
+  .nav-right { display: flex; align-items: center; gap: 20px; }
+  nav.links { display: flex; gap: 24px; align-items: center; }
   nav.links a { font-size: 14.5px; color: var(--muted); transition: color .15s; }
   nav.links a:hover { color: var(--text); }
   nav.links a.cta { color: var(--gold); font-weight: 600; }
-  .menu-btn { display: none; background: none; border: 0; color: var(--text); font-size: 26px; cursor: pointer; }
-  #mnav { display: none; }
+  .menu-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: none; border: 1px solid var(--line); color: var(--text);
+    padding: 8px 14px; border-radius: 3px; font: inherit; font-size: 14px; cursor: pointer;
+  }
+  .menu-btn:hover { border-color: var(--gold); color: var(--gold); }
+  .menu-icon { font-size: 16px; line-height: 1; }
+  /* Full collapsible menu -- drops below the header, all pages grouped */
+  #fullmenu {
+    position: absolute; left: 0; right: 0; top: 100%;
+    background: #0d0d0f; border-top: 1px solid var(--line);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    box-shadow: 0 24px 44px rgba(0,0,0,0.55); display: none;
+  }
+  #fullmenu.open { display: block; }
+  .menu-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 26px; padding: 28px 22px 32px; }
+  .menu-h { font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+  .menu-col a { display: block; padding: 7px 0; color: var(--muted); font-size: 15px; transition: color .12s; }
+  .menu-col a:hover { color: var(--text); }
 
   .hero {
     position: relative; min-height: 88vh; display: flex; align-items: center;
@@ -157,9 +175,7 @@
 
   @media (max-width: 820px) {
     nav.links { display: none; }
-    .menu-btn { display: block; }
-    #mnav.open { display: block; padding: 8px 0 16px; border-top: 1px solid rgba(255,255,255,0.06); }
-    #mnav a { display: block; padding: 11px 22px; color: var(--muted); font-size: 15px; }
+    .menu-grid { grid-template-columns: 1fr 1fr; gap: 20px 24px; }
     .about-grid { grid-template-columns: 1fr; gap: 30px; }
     .about-photo { aspect-ratio: 16/10; max-height: 360px; }
     .feature { grid-template-columns: 1fr; gap: 22px; }
@@ -168,6 +184,13 @@
     .videos { grid-template-columns: 1fr; }
     .band { background-attachment: scroll; }
   }
+  @media (max-width: 560px) {
+    .menu-lbl { display: none; }
+    .menu-btn { padding: 9px 12px; }
+    .menu-grid { grid-template-columns: 1fr; gap: 4px; padding: 20px 20px 26px; }
+    .menu-col { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 14px; }
+    .menu-col:first-child { border-top: 0; padding-top: 0; }
+  }
 </style>
 </head>
 <body>
@@ -175,26 +198,51 @@
 <header class="nav">
   <div class="wrap nav-inner">
     <a class="brand" href="/">Shine<span>,</span> The Mentalist</a>
-    <nav class="links">
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="https://www.texasmentalist.com/corporate-events-austin">Corporate</a>
-      <a href="#reviews">Reviews</a>
-      <a href="#tv">TV</a>
-      <a href="https://faq.texasmentalist.com/">FAQ</a>
-      <a class="cta" href="https://www.texasmentalist.com/contact-8">Check Availability</a>
-    </nav>
-    <button class="menu-btn" id="menuBtn" aria-label="Menu">&#9776;</button>
+    <div class="nav-right">
+      <nav class="links">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#tv">TV</a>
+        <a class="cta" href="https://www.texasmentalist.com/contact-8">Check Availability</a>
+      </nav>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+        <span class="menu-icon">&#9776;</span><span class="menu-lbl">Menu</span>
+      </button>
+    </div>
   </div>
-  <div id="mnav">
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="https://www.texasmentalist.com/corporate-events-austin">Corporate Events</a>
-    <a href="#reviews">Reviews</a>
-    <a href="#tv">TV Appearances</a>
-    <a href="https://press.texasmentalist.com/press-kit">Press Kit</a>
-    <a href="https://faq.texasmentalist.com/">FAQ</a>
-    <a href="https://www.texasmentalist.com/contact-8">Check Availability</a>
+  <div id="fullmenu" role="dialog" aria-label="Site menu">
+    <div class="wrap menu-grid">
+      <div class="menu-col">
+        <div class="menu-h">Explore</div>
+        <a href="/">Home</a>
+        <a href="#about">About Shine</a>
+        <a href="#services">Services</a>
+        <a href="#reviews">Reviews</a>
+      </div>
+      <div class="menu-col">
+        <div class="menu-h">Pages</div>
+        <a href="https://www.texasmentalist.com/corporate-events-austin">Corporate Events</a>
+        <a href="https://private.texasmentalist.com">Private Events</a>
+        <a href="https://press.texasmentalist.com">Press Kit</a>
+        <a href="https://www.texasmentalist.com/as-seen-on-tv">As Seen on TV</a>
+        <a href="https://www.texasmentalist.com/faq">FAQ</a>
+        <a href="https://www.texasmentalist.com/blog">Blog</a>
+      </div>
+      <div class="menu-col">
+        <div class="menu-h">Locations</div>
+        <a href="https://www.texasmentalist.com/dallas-corporate-mentalist">Dallas</a>
+        <a href="https://www.texasmentalist.com/houston-corporate-mentalist">Houston</a>
+        <a href="https://www.texasmentalist.com/san-antonio-corporate-mentalist">San Antonio</a>
+      </div>
+      <div class="menu-col">
+        <div class="menu-h">Get in touch</div>
+        <a href="https://www.texasmentalist.com/contact-8">Check Availability</a>
+        <a href="sms:+17372715308">Text Me</a>
+        <a href="https://www.texasmentalist.com/privacy">Privacy Policy</a>
+        <a href="https://www.texasmentalist.com/tc">Terms &amp; Conditions</a>
+      </div>
+    </div>
   </div>
 </header>
 
@@ -322,11 +370,20 @@
 </footer>
 
 <script>
-  // Mobile menu
-  var b = document.getElementById('menuBtn'), m = document.getElementById('mnav');
-  b.addEventListener('click', function () { m.classList.toggle('open'); });
-  Array.prototype.forEach.call(m.querySelectorAll('a'), function (a) {
-    a.addEventListener('click', function () { m.classList.remove('open'); });
+  // Collapsible full menu
+  var mb = document.getElementById('menuBtn'), fm = document.getElementById('fullmenu');
+  function closeMenu() { fm.classList.remove('open'); mb.setAttribute('aria-expanded', 'false'); }
+  mb.addEventListener('click', function (e) {
+    e.stopPropagation();
+    var open = fm.classList.toggle('open');
+    mb.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  document.addEventListener('click', function (e) {
+    if (fm.classList.contains('open') && !fm.contains(e.target) && !mb.contains(e.target)) closeMenu();
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMenu(); });
+  Array.prototype.forEach.call(fm.querySelectorAll('a'), function (a) {
+    a.addEventListener('click', closeMenu);
   });
   // The <shine-reviews> element handles the live review count + JSON-LD sync.
 </script>
