@@ -4,13 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Shine, The Mentalist | Corporate Mentalist & Magician in Austin, TX</title>
-<meta name="description" content="Austin-based corporate mentalist and magician. Mind-bending, interactive mentalism for executive events, conferences, and private parties. 300+ performances across Texas.">
+<meta name="description" content="Austin-based corporate mentalist and magician. Mind-bending, interactive mentalism for executive events, conferences, and private parties. 300+ performances, hundreds of five-star Google reviews.">
 <link rel="canonical" href="https://www.texasmentalist.com/">
 
-<!-- Open Graph / social -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="Shine, The Mentalist | Corporate Mentalist & Magician in Austin, TX">
-<meta property="og:description" content="Mind-bending, interactive mentalism for executive events. 300+ performances across Texas.">
+<meta property="og:description" content="Mind-bending, interactive mentalism for executive events. 300+ performances, hundreds of five-star reviews.">
 <meta property="og:url" content="https://www.texasmentalist.com/">
 <meta property="og:image" content="https://static.wixstatic.com/media/b4bfee_4fd65db8fc6646059114e418d2d39f35~mv2.jpg">
 
@@ -18,8 +17,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
 
-<!-- LocalBusiness structured data (SEO parity with the Wix page) -->
-<script type="application/ld+json">
+<script type="application/ld+json" id="ld-json-business">
 {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
@@ -31,6 +29,7 @@
   "email": "shine@texasmentalist.com",
   "areaServed": ["Austin", "Dallas", "Houston", "San Antonio", "Texas"],
   "address": { "@type": "PostalAddress", "addressLocality": "Austin", "addressRegion": "TX", "addressCountry": "US" },
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5", "reviewCount": "175" },
   "sameAs": [
     "https://www.facebook.com/mentalistshine",
     "https://www.instagram.com/shine.mentalist/",
@@ -41,33 +40,21 @@
 
 <style>
   :root {
-    --bg: #0a0a0b;
-    --bg-soft: #141416;
-    --card: #17171a;
-    --text: #f3f0e9;
-    --muted: #9a958c;
-    --gold: #c9a24b;
-    --gold-soft: #e0c27e;
-    --line: rgba(201,162,75,0.22);
-    --maxw: 1140px;
+    --bg: #0a0a0b; --bg-soft: #141416; --card: #17171a;
+    --text: #f3f0e9; --muted: #9a958c; --gold: #c9a24b; --gold-soft: #e0c27e;
+    --line: rgba(201,162,75,0.22); --maxw: 1140px;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   body {
-    background: var(--bg);
-    color: var(--text);
+    background: var(--bg); color: var(--text);
     font-family: "Inter", system-ui, -apple-system, sans-serif;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
+    line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden;
   }
   a { color: inherit; text-decoration: none; }
   img { max-width: 100%; display: block; }
   .wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 22px; }
-  .eyebrow {
-    font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase;
-    color: var(--gold); font-weight: 600;
-  }
+  .eyebrow { font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
   h2.section-title {
     font-family: "Cormorant Garamond", serif;
     font-size: clamp(30px, 5vw, 46px); font-weight: 600; line-height: 1.1;
@@ -77,14 +64,13 @@
     display: inline-block; padding: 15px 30px; border-radius: 2px;
     font-weight: 600; font-size: 15px; letter-spacing: 0.04em;
     border: 1px solid var(--gold); color: var(--gold);
-    transition: background .18s ease, color .18s ease, transform .05s ease;
+    transition: background .18s ease, color .18s ease, transform .05s ease; cursor: pointer;
   }
   .btn:hover { background: var(--gold); color: #0a0a0b; }
   .btn:active { transform: scale(.985); }
   .btn-solid { background: var(--gold); color: #0a0a0b; }
   .btn-solid:hover { background: var(--gold-soft); border-color: var(--gold-soft); }
 
-  /* NAV */
   header.nav {
     position: sticky; top: 0; z-index: 50;
     background: rgba(10,10,11,0.82); backdrop-filter: blur(10px);
@@ -100,7 +86,6 @@
   .menu-btn { display: none; background: none; border: 0; color: var(--text); font-size: 26px; cursor: pointer; }
   #mnav { display: none; }
 
-  /* HERO */
   .hero {
     position: relative; min-height: 88vh; display: flex; align-items: center;
     background:
@@ -123,29 +108,29 @@
   section { padding: clamp(64px, 9vw, 108px) 0; }
   .section-soft { background: var(--bg-soft); }
 
-  /* ABOUT */
-  .about-grid { display: grid; grid-template-columns: 1fr; gap: 30px; }
+  /* ABOUT (text + photo) */
+  .about-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center; }
   .stat { font-family: "Cormorant Garamond", serif; font-size: 54px; color: var(--gold); font-weight: 600; line-height: 1; }
-  .about p { color: #cfcbc2; font-size: 17px; margin-top: 16px; }
-  .clients { margin-top: 34px; }
+  .about p.body { color: #cfcbc2; font-size: 17px; margin-top: 16px; }
+  .about-photo { border-radius: 6px; border: 1px solid var(--line); aspect-ratio: 4/5; object-fit: cover; width: 100%; }
+  .clients { margin-top: 30px; }
   .clients .label { font-size: 12.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
-  .logos { display: flex; flex-wrap: wrap; gap: 10px 28px; }
+  .logos { display: flex; flex-wrap: wrap; gap: 10px 26px; }
   .logos span { font-family: "Cormorant Garamond", serif; font-size: 20px; color: #b7b2a8; letter-spacing: 0.03em; }
 
-  /* SERVICES */
-  .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px; }
-  .card {
-    background: var(--card); border: 1px solid var(--line); border-radius: 4px;
-    padding: 34px 30px; transition: transform .18s ease, border-color .18s ease;
-  }
-  .card:hover { transform: translateY(-4px); border-color: var(--gold); }
-  .card h3 { font-family: "Cormorant Garamond", serif; font-size: 27px; font-weight: 600; margin-bottom: 10px; }
-  .card p { color: var(--muted); font-size: 16px; }
+  /* FEATURE (service with photo) */
+  .feature { display: grid; grid-template-columns: 1fr 1fr; gap: 46px; align-items: center; }
+  .feature + .feature { margin-top: 72px; }
+  .feature .photo { border-radius: 6px; border: 1px solid var(--line); aspect-ratio: 3/2; object-fit: cover; width: 100%; }
+  .feature.reverse .txt { order: 2; }
+  .feature.reverse .photo { order: 1; }
+  .feature h3 { font-family: "Cormorant Garamond", serif; font-size: clamp(26px,3.4vw,34px); font-weight: 600; margin: 8px 0 12px; }
+  .feature p { color: var(--muted); font-size: 16.5px; }
 
   /* CTA BAND */
   .band { text-align: center; background:
-      linear-gradient(180deg, rgba(10,10,11,0.72), rgba(10,10,11,0.86)),
-      url('https://static.wixstatic.com/media/b4bfee_d01af0053225429cb5c04b8c1e330205~mv2.jpg') center/cover no-repeat fixed; }
+      linear-gradient(180deg, rgba(10,10,11,0.74), rgba(10,10,11,0.88)),
+      url('https://static.wixstatic.com/media/b4bfee_4fd65db8fc6646059114e418d2d39f35~mv2.jpg') center/cover no-repeat fixed; }
   .band h2 { font-family: "Cormorant Garamond", serif; font-size: clamp(30px,5vw,48px); font-weight: 600; margin-bottom: 14px; text-wrap: balance; }
   .band p { color: #d3cfc6; max-width: 560px; margin: 0 auto 28px; }
 
@@ -156,6 +141,25 @@
   .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
   .video .cap { padding: 14px 16px; font-size: 14px; color: var(--muted); }
 
+  /* REVIEWS */
+  .rev-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 16px; }
+  .stars { color: var(--gold); letter-spacing: 3px; font-size: 20px; }
+  .rev-sub { color: var(--muted); margin-top: 6px; }
+  .rev-sub a { color: var(--gold-soft); }
+  .rev-track {
+    display: flex; gap: 20px; margin-top: 34px; overflow-x: auto;
+    scroll-snap-type: x mandatory; padding-bottom: 10px; -webkit-overflow-scrolling: touch;
+  }
+  .rev-track::-webkit-scrollbar { height: 6px; }
+  .rev-track::-webkit-scrollbar-thumb { background: rgba(201,162,75,0.4); border-radius: 3px; }
+  .quote {
+    flex: 0 0 min(440px, 82%); scroll-snap-align: start;
+    background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: 28px 26px;
+  }
+  .quote .q { color: #e7e3da; font-size: 16.5px; font-style: italic; }
+  .quote .who { color: var(--gold-soft); font-size: 14px; margin-top: 16px; }
+  .rev-cta { margin-top: 30px; }
+
   /* CONTACT */
   .contact { text-align: center; }
   .contact .lead { color: #cfcbc2; max-width: 520px; margin: 8px auto 28px; }
@@ -163,7 +167,6 @@
   .contact-meta { margin-top: 26px; color: var(--muted); font-size: 15px; }
   .contact-meta a { color: var(--gold-soft); }
 
-  /* FOOTER */
   footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 40px 0; background: #070708; }
   .foot { display: flex; flex-wrap: wrap; gap: 18px; align-items: center; justify-content: space-between; }
   .social { display: flex; gap: 20px; }
@@ -176,7 +179,11 @@
     .menu-btn { display: block; }
     #mnav.open { display: block; padding: 8px 0 16px; border-top: 1px solid rgba(255,255,255,0.06); }
     #mnav a { display: block; padding: 11px 22px; color: var(--muted); font-size: 15px; }
-    .cards { grid-template-columns: 1fr; }
+    .about-grid { grid-template-columns: 1fr; gap: 30px; }
+    .about-photo { aspect-ratio: 16/10; max-height: 360px; }
+    .feature { grid-template-columns: 1fr; gap: 22px; }
+    .feature.reverse .txt { order: 2; } .feature.reverse .photo { order: 1; }
+    .feature .txt { order: 2; } .feature .photo { order: 1; }
     .videos { grid-template-columns: 1fr; }
     .band { background-attachment: scroll; }
   }
@@ -191,8 +198,8 @@
       <a href="#about">About</a>
       <a href="#services">Services</a>
       <a href="/corporate-events-austin">Corporate</a>
+      <a href="#reviews">Reviews</a>
       <a href="#tv">TV</a>
-      <a href="https://press.texasmentalist.com/press-kit">Press Kit</a>
       <a href="https://faq.texasmentalist.com/">FAQ</a>
       <a class="cta" href="/contact-8">Check Availability</a>
     </nav>
@@ -202,6 +209,7 @@
     <a href="#about">About</a>
     <a href="#services">Services</a>
     <a href="/corporate-events-austin">Corporate Events</a>
+    <a href="#reviews">Reviews</a>
     <a href="#tv">TV Appearances</a>
     <a href="https://press.texasmentalist.com/press-kit">Press Kit</a>
     <a href="https://faq.texasmentalist.com/">FAQ</a>
@@ -227,7 +235,7 @@
       <p class="eyebrow">About Shine</p>
       <div class="stat">300+</div>
       <p style="color:var(--muted);margin-top:4px;letter-spacing:.03em;">performances across Texas</p>
-      <p>Shine is an Austin-based corporate mentalist and magician who creates polished, interactive experiences for executive events, conferences, and private parties. Part mind reader, part entertainer, he turns a roomful of guests into willing participants in something they genuinely can't explain.</p>
+      <p class="body">Shine is an Austin-based corporate mentalist and magician who creates polished, interactive experiences for executive events, conferences, and private parties. Part mind reader, part entertainer, he turns a roomful of guests into willing participants in something they genuinely can't explain.</p>
       <div class="clients">
         <div class="label">Trusted by teams at</div>
         <div class="logos">
@@ -237,23 +245,30 @@
         </div>
       </div>
     </div>
+    <img class="about-photo" src="https://static.wixstatic.com/media/b4bfee_d01af0053225429cb5c04b8c1e330205~mv2.jpg" alt="Shine, The Mentalist performing" loading="lazy">
   </div>
 </section>
 
-<!-- SERVICES -->
+<!-- SERVICES (two photo features) -->
 <section id="services" class="section-soft">
   <div class="wrap">
     <p class="eyebrow">What I Do</p>
     <h2 class="section-title">Two ways to stun a room</h2>
-    <div class="cards">
-      <div class="card">
+
+    <div class="feature" style="margin-top:44px;">
+      <div class="txt">
         <h3>Corporate Mentalism Shows</h3>
-        <p>A stage show built for executive audiences — interactive mind reading, impossible predictions, and moments your guests won't stop talking about.</p>
+        <p>A stage show built for executive audiences — interactive mind reading, impossible predictions, and moments your guests won't stop talking about. Scales cleanly from a 20-person leadership dinner to a 500+ conference ballroom.</p>
       </div>
-      <div class="card">
+      <img class="photo" src="https://static.wixstatic.com/media/b4bfee_ca6f3b50bf5a490a9ed96ef40895a1b9~mv2.png" alt="Shine performing a corporate mentalism stage show" loading="lazy">
+    </div>
+
+    <div class="feature reverse">
+      <div class="txt">
         <h3>Strolling Mentalism &amp; Close-Up Magic</h3>
-        <p>The impossible, delivered directly to your guests — small-group mind reading and sleight of hand that works the room during receptions and cocktail hours.</p>
+        <p>The impossible, delivered directly to your guests — small-group mind reading and sleight of hand that works the room during receptions and cocktail hours. No stage, no setup, no A/V required.</p>
       </div>
+      <img class="photo" src="https://static.wixstatic.com/media/b4bfee_5d8472d6d6e54a06b83425c29facd70e~mv2.jpg" alt="Shine performing strolling close-up magic for guests" loading="lazy">
     </div>
   </div>
 </section>
@@ -267,8 +282,33 @@
   </div>
 </section>
 
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="wrap">
+    <p class="eyebrow">What Clients Say</p>
+    <div class="rev-head">
+      <h2 class="section-title" style="margin-bottom:0;">Hundreds of five-star reviews</h2>
+      <span class="stars">★★★★★</span>
+    </div>
+    <p class="rev-sub"><span id="review-count-text">175</span>+ five-star reviews on Google.</p>
+    <div class="rev-track">
+      <div class="quote">
+        <p class="q">&ldquo;Shine delivered a truly brilliant performance. Managing a crowd of 500+ attendees is no small feat, yet Shine commanded the room with ease. He doesn't just perform; he creates an engaging experience that people will talk about long after the show ends.&rdquo;</p>
+        <div class="who">— Abdul K. · Corporate event, Houston · 500+ guests</div>
+      </div>
+      <div class="quote">
+        <p class="q">&ldquo;Shine was amazing. He had my friends shrieking and chanting and in utter disbelief. No one could stop talking about it for the rest of the party. Some of the best money I ever spent.&rdquo;</p>
+        <div class="who">— Jordyn R. · Five-star Google review</div>
+      </div>
+    </div>
+    <div class="rev-cta">
+      <a class="btn" href="https://search.google.com/local/reviews?placeid=REPLACE_WITH_PLACE_ID" id="google-reviews-link">Read our Google reviews</a>
+    </div>
+  </div>
+</section>
+
 <!-- TV -->
-<section id="tv">
+<section id="tv" class="section-soft">
   <div class="wrap">
     <p class="eyebrow">As Seen on TV</p>
     <h2 class="section-title">Watch Shine in action</h2>
@@ -291,7 +331,7 @@
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="section-soft contact">
+<section id="contact" class="contact">
   <div class="wrap">
     <p class="eyebrow">Contact</p>
     <h2 class="section-title">Let's talk about your event</h2>
@@ -320,11 +360,31 @@
 </footer>
 
 <script>
+  // Mobile menu
   var b = document.getElementById('menuBtn'), m = document.getElementById('mnav');
   b.addEventListener('click', function () { m.classList.toggle('open'); });
   Array.prototype.forEach.call(m.querySelectorAll('a'), function (a) {
     a.addEventListener('click', function () { m.classList.remove('open'); });
   });
+
+  // Live Google review count -- same feed the Wix pages use, so it stays in
+  // sync automatically. 175 is just the fallback until this resolves.
+  fetch('https://www.texasmentalist.com/_functions/reviewCount')
+    .then(function (r) { return r.json(); })
+    .then(function (data) {
+      var value = data && data.reviewCount;
+      if (!value) return;
+      var text = document.getElementById('review-count-text');
+      if (text) text.textContent = value;
+      var ld = document.getElementById('ld-json-business');
+      if (ld) {
+        try {
+          var json = JSON.parse(ld.textContent);
+          if (json.aggregateRating) { json.aggregateRating.reviewCount = String(value); ld.textContent = JSON.stringify(json); }
+        } catch (e) {}
+      }
+    })
+    .catch(function () {});
 </script>
 </body>
 </html>
