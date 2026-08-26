@@ -141,25 +141,6 @@
   .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
   .video .cap { padding: 14px 16px; font-size: 14px; color: var(--muted); }
 
-  /* REVIEWS */
-  .rev-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 16px; }
-  .stars { color: var(--gold); letter-spacing: 3px; font-size: 20px; }
-  .rev-sub { color: var(--muted); margin-top: 6px; }
-  .rev-sub a { color: var(--gold-soft); }
-  .rev-track {
-    display: flex; gap: 20px; margin-top: 34px; overflow-x: auto;
-    scroll-snap-type: x mandatory; padding-bottom: 10px; -webkit-overflow-scrolling: touch;
-  }
-  .rev-track::-webkit-scrollbar { height: 6px; }
-  .rev-track::-webkit-scrollbar-thumb { background: rgba(201,162,75,0.4); border-radius: 3px; }
-  .quote {
-    flex: 0 0 min(440px, 82%); scroll-snap-align: start;
-    background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: 28px 26px;
-  }
-  .quote .q { color: #e7e3da; font-size: 16.5px; font-style: italic; }
-  .quote .who { color: var(--gold-soft); font-size: 14px; margin-top: 16px; }
-  .rev-cta { margin-top: 30px; }
-
   /* CONTACT */
   .contact { text-align: center; }
   .contact .lead { color: #cfcbc2; max-width: 520px; margin: 8px auto 28px; }
@@ -282,30 +263,11 @@
   </div>
 </section>
 
-<!-- REVIEWS -->
-<section id="reviews">
-  <div class="wrap">
-    <p class="eyebrow">What Clients Say</p>
-    <div class="rev-head">
-      <h2 class="section-title" style="margin-bottom:0;">Hundreds of five-star reviews</h2>
-      <span class="stars">★★★★★</span>
-    </div>
-    <p class="rev-sub"><span id="review-count-text">175</span>+ five-star reviews on Google.</p>
-    <div class="rev-track">
-      <div class="quote">
-        <p class="q">&ldquo;Shine delivered a truly brilliant performance. Managing a crowd of 500+ attendees is no small feat, yet Shine commanded the room with ease. He doesn't just perform; he creates an engaging experience that people will talk about long after the show ends.&rdquo;</p>
-        <div class="who">— Abdul K. · Corporate event, Houston · 500+ guests</div>
-      </div>
-      <div class="quote">
-        <p class="q">&ldquo;Shine was amazing. He had my friends shrieking and chanting and in utter disbelief. No one could stop talking about it for the rest of the party. Some of the best money I ever spent.&rdquo;</p>
-        <div class="who">— Jordyn R. · Five-star Google review</div>
-      </div>
-    </div>
-    <div class="rev-cta">
-      <a class="btn" href="https://g.page/r/CfEvBpaR9455EAI/review" id="google-reviews-link">Read our Google reviews</a>
-    </div>
-  </div>
-</section>
+<!-- REVIEWS: the exact same live Google-reviews carousel as the Wix homepage,
+     loaded from the shared custom-element script. Renders its own dark band,
+     3 cards across (scrollable), pulling /_functions/reviews live. -->
+<shine-reviews id="reviews"></shine-reviews>
+<script src="https://press.texasmentalist.com/widgets/reviews-carousel-element.js"></script>
 
 <!-- TV -->
 <section id="tv" class="section-soft">
@@ -366,25 +328,7 @@
   Array.prototype.forEach.call(m.querySelectorAll('a'), function (a) {
     a.addEventListener('click', function () { m.classList.remove('open'); });
   });
-
-  // Live Google review count -- same feed the Wix pages use, so it stays in
-  // sync automatically. 175 is just the fallback until this resolves.
-  fetch('https://www.texasmentalist.com/_functions/reviewCount')
-    .then(function (r) { return r.json(); })
-    .then(function (data) {
-      var value = data && data.reviewCount;
-      if (!value) return;
-      var text = document.getElementById('review-count-text');
-      if (text) text.textContent = value;
-      var ld = document.getElementById('ld-json-business');
-      if (ld) {
-        try {
-          var json = JSON.parse(ld.textContent);
-          if (json.aggregateRating) { json.aggregateRating.reviewCount = String(value); ld.textContent = JSON.stringify(json); }
-        } catch (e) {}
-      }
-    })
-    .catch(function () {});
+  // The <shine-reviews> element handles the live review count + JSON-LD sync.
 </script>
 </body>
 </html>
