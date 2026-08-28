@@ -1,25 +1,23 @@
-// TEMP endpoint: uses the server-side GOOGLE_PLACES_API_KEY to text-search for
-// the business and return candidate Place IDs (id/name/address/rating/count) so
-// the correct ChIJ... can be pinned. No secret is returned. DELETE after use.
+// TEMP endpoint: tests Place Details for the computed Place ID and returns
+// name/rating/count so we can confirm the right listing. No secret returned.
+// DELETE after use.
 
 const API_KEY = process.env.GOOGLE_PLACES_API_KEY || '';
+const PLACE_ID = 'ChIJVcsOoDYD5kAR8S8GlpH3jnk';
 
 export default async function handler(req, res) {
   res.setHeader('Cache-Control', 'no-store');
-  if (!API_KEY) return res.status(200).json({ error: 'GOOGLE_PLACES_API_KEY not set on this project' });
+  if (!API_KEY) return res.status(200).json({ error: 'GOOGLE_PLACES_API_KEY not set' });
   try {
-    const resp = await fetch('https://places.googleapis.com/v1/places:searchText', {
-      method: 'POST',
+    const resp = await fetch(`https://places.googleapis.com/v1/places/${PLACE_ID}`, {
       headers: {
-        'Content-Type': 'application/json',
         'X-Goog-Api-Key': API_KEY,
-        'X-Goog-FieldMask': 'places.id,places.displayName,places.formattedAddress,places.rating,places.userRatingCount'
-      },
-      body: JSON.stringify({ textQuery: 'Shine, The Mentalist Austin Texas' })
+        'X-Goog-FieldMask': 'id,displayName,formattedAddress,rating,userRatingCount'
+      }
     });
     const status = resp.status;
     const data = await resp.json();
-    return res.status(200).json({ status, data });
+    return res.status(200).json({ status, placeIdTried: PLACE_ID, data });
   } catch (e) {
     return res.status(200).json({ error: String(e).slice(0, 200) });
   }
