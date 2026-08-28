@@ -12,7 +12,7 @@
 import { reviewsData } from '../data/reviews.js';
 
 const API_KEY = process.env.GOOGLE_PLACES_API_KEY || '';
-const PLACE_ID = process.env.GOOGLE_PLACE_ID || '';
+const PLACE_ID = process.env.GOOGLE_PLACE_ID || 'ChIJVcsOoDYD5kAR8S8GlpH3jnk';
 
 // Live rating + count only (no reviews field -> stays on the cheap SKU).
 async function fetchStats() {
